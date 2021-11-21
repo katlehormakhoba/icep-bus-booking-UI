@@ -1,0 +1,199 @@
+<section id="register">
+    <!-- <div class="bwm-form">
+        <div class="row">
+            <div class="col-md-5">
+                <h1 class="page-title">Register</h1>
+                <form #formData="ngForm">
+                    <div class="form-group">
+                        <label for="name">Username</label>
+                        <input 
+                            type="text" 
+                            [(ngModel)]="registerFormData.name"
+                            name="name"
+                            minlength=4
+                            #name="ngModel"
+                            required
+                            class="form-control" 
+                            id="name">
+                        <div *ngIf="name.invalid && name.touched" class="alert alert-danger">
+                            <div *ngIf="name.errors.required">Username is required.</div>
+                            <div *ngIf="name.errors.minlength">Username must be at least 4 characters long.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input 
+                            type="email" 
+                            [(ngModel)]="registerFormData.email"
+                            #email="ngModel"
+                            name="email"
+                            pattern="[a-zA-Z0-9.-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{3,}"
+                            required
+                            class="form-control" 
+                            id="email">
+                        <div *ngIf="email.invalid && email.touched" class="alert alert-danger">
+                            <div *ngIf="email.errors.required">
+                                Email is required.
+                              </div>
+                              <div *ngIf="email.errors.pattern">
+                                Invalid email format.
+                              </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input 
+                            type="password" 
+                            [(ngModel)]="registerFormData.password"
+                            name="password"
+                            #password="ngModel"
+                            minlength="6"
+                            required
+                            class="form-control" 
+                            id="password">
+                        <div *ngIf="password.invalid && password.touched" class="alert alert-danger">
+                            <div *ngIf="password.errors.required">Password is required.</div>
+                            <div *ngIf="password.errors.minlength">Password must be at least 6 characters long.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input 
+                            type="password" 
+                            [(ngModel)]="registerFormData.confirmPassword"
+                            name="confirmPassword"
+                            #confirmPassword="ngModel"
+                            minlength="6"
+                            required
+                            class="form-control" 
+                            id="confirmPassword">
+                        <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="alert alert-danger">
+                            <div *ngIf="confirmPassword.errors.required">Confirm Password is required.</div>
+                            <div *ngIf="confirmPassword.errors.minlength">Confirm Password must be at least 6 characters long.</div>
+                        </div>
+                    </div>
+                    <button 
+                        (click)="signup()" 
+                        [disabled] = "formData.invalid"
+                        type="submit" 
+                        class="btn btn-outline-success">Submit</button>
+                </form>
+                <div *ngIf="errors.length > 0" class="alert alert-danger">
+                    <p *ngFor="let error of errors">
+                      {{error.message}}
+                    </p>
+                  </div>
+            </div>
+            <div class="col-md-6 ml-auto">
+                <div class="image-container">
+                    <h2 class="catchphrase">As our member you have access to most awesome clothing in the world.</h2>
+                    <img src="https://hypemagazine.co.za/wp-content/uploads/2019/01/riky-rick-cotton-fest-2019-yomzansi-121.png"
+                        alt="">
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                    <form #formData="ngForm" id="signup-form" class="signup-form">
+                        <h2 class="form-title">Create account</h2>
+                        <div class="form-group">
+                            <input 
+                            type="text" 
+                            [(ngModel)]="registerFormData.name"
+                            name="name"
+                            minlength=4
+                            #name="ngModel"
+                            required
+                            placeholder="Your Name"
+                            class="form-input" 
+                            id="name">
+                        <div *ngIf="name.invalid && name.touched" class="alert alert-danger">
+                            <div *ngIf="name.errors.required">Username is required.</div>
+                            <div *ngIf="name.errors.minlength">Username must be at least 4 characters long.</div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <input 
+                            type="email" 
+                            [(ngModel)]="registerFormData.email"
+                            #email="ngModel"
+                            name="email"
+                            pattern="[a-zA-Z0-9.-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{3,}"
+                            required
+                            placeholder="Your Email"
+                            class="form-input" 
+                            id="email">
+                        <div *ngIf="email.invalid && email.touched" class="alert alert-danger">
+                            <div *ngIf="email.errors.required">
+                                Email is required.
+                              </div>
+                              <div *ngIf="email.errors.pattern">
+                                Invalid email format.
+                              </div>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <input 
+                            type="password" 
+                            [(ngModel)]="registerFormData.password"
+                            name="password"
+                            #password="ngModel"
+                            minlength="6"
+                            required
+                            placeholder="Password"
+                            class="form-input" 
+                            id="password">
+                        <div *ngIf="password.invalid && password.touched" class="alert alert-danger">
+                            <div *ngIf="password.errors.required">Password is required.</div>
+                            <div *ngIf="password.errors.minlength">Password must be at least 6 characters long.</div>
+                        </div>
+                           
+                        </div>
+                        <div class="form-group">
+                            <input 
+                            type="password" 
+                            [(ngModel)]="registerFormData.confirmPassword"
+                            name="confirmPassword"
+                            #confirmPassword="ngModel"
+                            minlength="6"
+                            required
+                            placeholder="Repeat your password"
+                            class="form-input" 
+                            id="confirmPassword">
+                        <div *ngIf="confirmPassword.invalid && confirmPassword.touched" class="alert alert-danger">
+                            <div *ngIf="confirmPassword.errors.required">Confirm Password is required.</div>
+                            <div *ngIf="confirmPassword.errors.minlength">Confirm Password must be at least 6 characters long.</div>
+                        </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="button" (click)="signup()" 
+                            [disabled] = "formData.invalid"
+                            type="submit" 
+                            class="btn btn-outline-success" class="form-submit" value="Sign up"/>
+                        </div>
+                    </form>
+                    <div *ngIf="errors.length > 0" class="alert alert-danger">
+                        <p *ngFor="let error of errors">
+                          {{error.message}}
+                        </p>
+                      </div>
+                    <p class="loginhere">
+                        Have already an account ? <a routerLink="/login" class="loginhere-link">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</section>

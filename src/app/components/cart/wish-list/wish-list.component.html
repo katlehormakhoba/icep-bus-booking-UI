@@ -1,0 +1,99 @@
+<div id="center">
+<h1>Wishlist</h1>
+
+<!-- Start spinner handling -->
+  <ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.8)" 
+    size = "medium" 
+    color = "#fff" 
+    type = "pacman" 
+    [fullScreen] = "true"><p style="color: white" > Loading... </p>
+  </ngx-spinner>
+<!-- End spinner handling -->
+
+<!-- Start error handling -->
+  <div *ngIf="errors.length > 0" class="alert alert-warning">
+      <p *ngFor="let error of errors">
+        {{error.message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </p>
+    </div>
+<div *ngIf="message" class="alert alert-success">
+          {{message}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+</div>
+<!-- End of error handling -->
+<ng-container *ngIf="empty else notEmpty">
+  <app-empty></app-empty>
+
+</ng-container>
+<ng-template #notEmpty>
+  <!--Section: Block Content-->
+<section>
+
+  <!-- Grid row -->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div *ngFor="let wish of wishlist" class="col-md-4 mb-5">
+
+      <!-- Card -->
+      <div class="">
+
+        <div class="view zoom overlay z-depth-2 rounded">
+          <img class="img-fluid w-100"
+            src="{{wish.product['coverImage']}}" alt="Sample">
+        </div>
+
+        <div class="text-center pt-4">
+
+          <h5>{{wish.product.name}}</h5>
+          <p class="mb-2 text-muted text-uppercase small">{{wish.product.category}}</p>
+          <ul  class="rating" >
+              <li>
+                <i class="fa fa-star fa-sm text-primary"></i>
+              </li>
+              <li>
+                <i class="fa fa-star fa-sm text-primary"></i>
+              </li>
+              <li>
+                <i class="fa fa-star fa-sm text-primary"></i>
+              </li>
+              <li>
+                <i class="fa fa-star fa-sm text-primary"></i>
+              </li>
+              <li>
+                <i class="fa fa-star-o fa-sm text-primary"></i>
+              </li>
+            </ul>
+          <hr>
+          <h6 class="mb-3">R {{wish.product.price}}</h6>
+          <button (click)="moveToCart(wish.product._id)" type="button" class="btn btn-primary btn-sm mr-1 mb-2"><i
+              class="fa fa-shopping-cart pr-2"></i>Add to cart</button>
+          <button routerLink="/product/{{wish.product._id}}" type="button" class="btn btn-light btn-sm mr-1 mb-2"><i
+              class="fa fa-info-circle pr-2"></i>Details</button>
+          <button (click)="deleteWishlist(wish._id)" type="button" class="btn btn-elegant btn-sm px-3 mb-2 material-tooltip-main"
+            data-toggle="tooltip" data-placement="top" title="Remove from wishlist"><i
+              class="fa fa-times"></i></button>
+
+        </div>
+
+      </div>
+      <!-- Card -->
+
+    </div>
+    <!-- Grid column -->
+
+   
+
+  </div>
+  <!-- Grid row -->
+
+</section>
+<!--Section: Block Content-->
+</ng-template>

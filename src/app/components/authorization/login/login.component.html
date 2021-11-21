@@ -1,0 +1,65 @@
+<section id="login">
+    <div class="bwm-form">
+      <div class="row">
+        <div class="col-md-5">
+          <h1>Login</h1>
+          <div *ngIf="message" class="alert alert-warning">
+             {{message}}
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form #formData="ngForm">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input 
+                type="email"
+                [(ngModel)]="loginFormData.email"
+                #email="ngModel"
+                pattern="[a-zA-Z0-9.-]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{3,}"
+                required
+                name="email"
+                class="form-control"
+                id="email">
+              <div *ngIf="email.invalid && email.touched" class="alert alert-danger">
+                <div *ngIf="email.errors.required">Email is required.</div>
+                <div *ngIf="email.errors.pattern">Must be valid email format!</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input 
+                type="password"
+                [(ngModel)]="loginFormData.password"
+                #password="ngModel"
+                name="password"
+                required
+                minlength="6"
+                class="form-control"
+                id="password">
+                <div *ngIf="password.invalid && password.touched" class="alert alert-danger">
+                  <div *ngIf="password.errors.required">Password is required.</div>
+                  <div *ngIf="password.errors.minlength">Password must be at least 6 characters long.</div>
+                </div>
+            </div>
+            <button 
+              type="submit"
+              [disabled]="formData.invalid" 
+              (click)="login()"
+              class="btn btn-outline-success">Submit</button>
+          </form>
+          <div *ngIf="errors.length > 0" class="alert alert-danger">
+            <p *ngFor="let error of errors">
+              {{error.message}}
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 ml-auto">
+          <div class="image-container">
+            <h2 class="catchphrase">Cotton eaters never die, they multiply.</h2>
+            <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

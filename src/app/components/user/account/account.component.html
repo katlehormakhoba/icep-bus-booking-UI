@@ -1,0 +1,110 @@
+<div id="center">
+    <h1>Your account settings</h1>
+    <!-- Start spinner handling -->
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="pacman" [fullScreen]="true">
+        <p style="color: white"> Loading... </p>
+    </ngx-spinner>
+    <!-- End spinner handling -->
+
+    <!-- Start error handling -->
+    <div *ngIf="warnings.length > 0" class="alert alert-warning">
+        <p *ngFor="let warning of warnings">
+            {{warning.message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </p>
+    </div>
+    <div *ngIf="message" class="alert alert-success">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="user-view__content">
+        <div class="user-view__form-container">
+            <form #formData="ngForm" class="col-lg-12">
+                <div class="form__group">
+                    <label class="form__label" for="name">Name</label>
+                    <input 
+                        class="form__input" 
+                        [(ngModel)]="accountFormData.name"
+                        #name="ngModel"
+                        name="name"
+                        id="name" 
+                        minlength="4"
+                        maxlength="15"
+                        type="text" 
+                        placeholder="{{userName}}">
+                </div>
+                <div class="form__group ma-bt-md">
+                    <label class="form__label" for="email">Email address</label>
+                    <input 
+                        class="form__input"
+                        [(ngModel)]="accountFormData.email"
+                        #email="ngModel" 
+                        name="email"
+                        id="email" 
+                        type="email" 
+                        placeholder="{{userEmail}}">
+                </div>
+                <div class="form__group form__photo-upload">
+                    <img class="form__user-photo"
+                        src="{{userPhoto}}" alt="loading..." />
+                    <input 
+                        class="form__input" 
+                        id="photo"
+                        type="file" 
+                        (change)="updatePhoto($event.target.files)"
+                        placeholder="Choose new photo">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div *ngIf="errors.length > 0" class="alert alert-danger ">
+                            <p *ngFor="let error of errors">
+                              {{error.message}}
+                            </p>
+                          </div>
+                    </div>
+                    
+                    <div class="form__group right col-md-6">
+                        <button 
+                            type="submit"
+                            [disabled]="formData.invalid"
+                            (click)="updateMe()"
+                            class="btn btn-outline-primary">Save settings
+                        </button>
+                    </div>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="row">
+    <div class="user-view__form-container">
+        <h2 class="heading-secondary ma-bt-md">Password change</h2>
+        <form class="form form-user-settings">
+            <div class="form__group"><label class="form__label" for="password-current">Current password</label><input class="form__input" id="password-current" type="password" placeholder="••••••••" required="required" minlength="8" /></div>
+            <div class="form__group"><label class="form__label" for="password">New password</label><input class="form__input" id="password" type="password" placeholder="••••••••" required="required" minlength="8" /></div>
+            <div class="form__group ma-bt-lg"><label class="form__label" for="password-confirm">Confirm password</label><input class="form__input" id="password-confirm" type="password" placeholder="••••••••" required="required" minlength="8" /></div>
+            <div class="form__group right"><button class="btn btn-primary btn-block waves-effect waves-light">Save password</button></div>
+        </form>
+    </div>
+</div> -->
+
+
+
+
+
+<!-- My Photo Upload -->
+
+<!-- <input id="photo" type="file" hidden required>
+ our custom upload button
+<label class="label" for="photo">Choose File</label>
+name of file chosen 
+<span id="file-chosen">No file chosen</span> -->

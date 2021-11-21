@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/">cottonFest</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+  
+      
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <ng-container *ngIf="isAuthenticated else notAuthMenu">
+          <li class="nav-item">
+            <img src="https://res.cloudinary.com/katleho/image/upload/v1606199140/{{userPhoto}}" alt="loading..." class="avatar"> 
+          </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{username}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/cart">Cart</a>
+            <a class="dropdown-item" routerLink="/wish">Wish list</a>
+            <a class="dropdown-item" routerLink="/order">Orders</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/me">My account</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="logout()">logout</a>
+        </li>
+        </ng-container>
+        <ng-template #notAuthMenu>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signup">Register</a>
+          </li>
+        </ng-template>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/support">About</a>
+        </li>
+        
+      </ul>
+      
+    </div>
+  </nav>

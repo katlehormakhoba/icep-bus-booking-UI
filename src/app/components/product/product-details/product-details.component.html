@@ -1,0 +1,165 @@
+<div id="center">
+<h1>Product details</h1>
+
+<!-- Start spinner handling -->
+  <ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.8)" 
+    size = "medium" 
+    color = "#fff" 
+    type = "pacman" 
+    [fullScreen] = "true"><p style="color: white" > Loading... </p>
+  </ngx-spinner>
+<!-- End spinner handling -->
+
+<!-- Start error handling -->
+  <div *ngIf="errors.length > 0" class="alert alert-warning">
+      <p *ngFor="let error of errors">
+        {{error.message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </p>
+    </div>
+<div *ngIf="message" class="alert alert-success">
+          {{message}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+</div>
+<!-- End of error handling -->
+
+
+
+<!--Section: Block Content-->
+<section class="mb-5">
+
+  <div class="row">
+    <div class="col-md-6 mb-4 mb-md-0">
+      <div class="mdb-lightbox">
+
+        <div class="row product-gallery mx-1">
+
+          <div class="col-12 mb-0">
+            <figure class="view overlay rounded z-depth-1 main-img">
+              <a 
+                data-size="710x823">
+                <img src="{{mainImage}}"
+                  class="img-fluid z-depth-1">
+              </a>
+            </figure>
+          </div>
+          
+          <div class="col-12">
+            <div class="row">
+            
+              <div *ngFor="let image of product.images" class="col-3">
+            
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                
+                  <img (click)="changeImage(image)" src="{{image}}"
+                    class="img-fluid myImage">
+               
+                  <div class="mask rgba-white-slight"></div>
+                </div>
+             
+              </div>
+            
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-6">
+
+      <h5>{{product.name}}</h5>
+      <p class="mb-2 text-muted text-uppercase small">{{product.category}}</p>
+      <ul class="rating">
+        <li>
+          <i class="fa fa-star fa-sm text-primary"></i>
+        </li>
+        <li>
+          <i class="fa fa-star fa-sm text-primary"></i>
+        </li>
+        <li>
+          <i class="fa fa-star fa-sm text-primary"></i>
+        </li>
+        <li>
+          <i class="fa fa-star fa-sm text-primary"></i>
+        </li>
+        <li>
+          <i class="fa fa-star-o fa-sm text-primary"></i>
+        </li>
+      </ul>
+      <p><span class="mr-1"><strong>R {{product.price}}</strong></span></p>
+      <p class="pt-1">{{product.description}}</p>
+      <div class="table-responsive">
+        <table class="table table-sm table-borderless mb-0">
+          <tbody>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Brand</strong></th>
+              <td>{{product.brand}}</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Color</strong></th>
+              <td>{{product.color}}</td>
+            </tr>
+            <tr>
+              <th class="pl-0 w-25" scope="row"><strong>Delivery</strong></th>
+              <td>SA, KZN</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div class="table-responsive mb-2">
+        <table class="table table-sm table-borderless">
+          <tbody>
+            <tr>
+              <td class="pl-0 pb-0 w-25">Quantity</td>
+              <td class="pb-0">Select size</td>
+            </tr>
+            <tr>
+              <td class="pl-0">
+                <div class="def-number-input number-input safari_only">
+                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                  <input class="quantity" min="0" name="quantity" value="1" type="number">
+                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+              </td>
+              <td>
+                <div class="mt-1">
+                  <div class="form-check form-check-inline pl-0">
+                    <input type="radio" class="form-check-input" id="small" name="materialExampleRadios"
+                      checked>
+                    <label class="form-check-label small text-uppercase card-link-secondary"
+                      for="small">Small</label>
+                  </div>
+                  <div class="form-check form-check-inline pl-0">
+                    <input type="radio" class="form-check-input" id="medium" name="materialExampleRadios">
+                    <label class="form-check-label small text-uppercase card-link-secondary"
+                      for="medium">Medium</label>
+                  </div>
+                  <div class="form-check form-check-inline pl-0">
+                    <input type="radio" class="form-check-input" id="large" name="materialExampleRadios">
+                    <label class="form-check-label small text-uppercase card-link-secondary"
+                      for="large">Large</label>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="button" (click)="checkOut(product._id)" class="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
+      <button type="button" (click)="createOrder(product._id)" class="btn btn-light btn-md mr-1 mb-2"><i
+          class="fa fa-shopping-cart pr-2"></i>Add to cart</button>
+    </div>
+  </div>
+
+</section>
+<!--Section: Block Content-->
+
+

@@ -1,0 +1,11 @@
+<app-header
+  [isAuthenticated]="auth.isAuthenticated"
+  [username]="auth.username"
+  [userPhoto]="auth.userPhoto"
+  [logout]="logout">
+</app-header>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,49 @@
+<div id="center">
+    <h1>Order History</h1>
+    <p>this page is still under development</p>
+  
+    <!-- Start spinner handling -->
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="pacman" [fullScreen]="true">
+      <p style="color: white"> Loading... </p>
+    </ngx-spinner>
+    <!-- End spinner handling -->
+</div>
+
+<section>  
+    <div class="row">
+        <h5 class="mb-4">Purchased (<span>{{results}}</span> carts)</h5>
+      <div *ngFor="let address of addresses" class="card mb-4 col-lg-12 ">
+        <div class="row">
+          <div class="col-lg-12">
+  
+            <h2>{{address.street}}</h2>
+            <h3>{{address.city}}</h3>
+            <h5>{{address.code}}</h5>
+
+            <hr>
+
+            <p class="mb-lg-0">Notes: {{address.description}}</p>
+
+              <!-- <h6 class="mb-3">
+                <span class="text-grey"><strong>Amount: R 3600</strong></span>
+              </h6> -->
+              <div style="float: right;" class="my-4">
+                <h6 class="mb-3">
+                    <!-- <span class="text-danger mr-1">$12.99</span> -->
+                    <span class="text-grey"><strong>Amount: R {{address.amount}}</strong></span>
+                  </h6>
+                <button 
+                    type="button" class="btn btn-primary btn-md mr-1 mb-2"
+                    data-toggle="tooltip" data-placement="top" title="On the way"><i
+                    class="fa fa-paper-plane pr-2"></i>Status</button>
+                <button routerLink="/order/{{address.orderID}}" type="button" class="btn btn-light btn-md mr-1 mb-2"><i
+                    class="fa fa-info-circle pr-2"></i>Details</button>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+  </section>
+  <!--Section: Block Content-->

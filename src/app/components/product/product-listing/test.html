@@ -1,0 +1,63 @@
+<div id="center">
+    <h1>Your home all around the world</h1>
+<div *ngIf="message" class="alert alert-success">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+</div>
+<div class="row">
+    <div *ngFor="let product of products" class="col-sm-12 col-md-6 col-lg-4" style="padding-top: 20px">
+
+        <div class="card">
+            <a routerLink="/product/{{product._id}}">
+                <img src="https://source.unsplash.com/random" class="card-img-top" alt="...">
+                <div class="card-img-overlay d-flex justify-content-end">
+                    <a style="font-size:36px" class="card-link text-danger like">
+                        <i class="fa fa-heart"></i>
+                      </a>
+                </div>
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{product.brand}}</h6>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                    <div class="options d-flex flex-fill">
+                        <select class="custom-select mr-1">
+                           <option selected>Color</option>
+                           <option value="1">Green</option>
+                           <option value="2">Blue</option>
+                           <option value="3">Red</option>
+                       </select>
+                       <select class="custom-select ml-1">
+                           <option selected>Size</option>
+                           <option value="1">41</option>
+                           <option value="2">42</option>
+                           <option value="3">43</option>
+                       </select>
+                     </div>
+                     <div class="buy d-flex justify-content-between align-items-center">
+                        <div class="price text-success"><h5 class="mt-4">R{{product.price}}</h5></div>
+                         <a href="#" class="btn btn-danger mt-3"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                      </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<nav aria-label="Page navigation example"  style="padding-top: 20px">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
