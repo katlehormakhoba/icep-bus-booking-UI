@@ -17,6 +17,7 @@ export class ProductListingComponent implements OnInit {
   products: Product[] = [];
   message: string = '';
   errors = [];
+  period = '12:00 PM'
   constructor(
     private productService: ProductService,
     private cartService: CartService,
@@ -56,6 +57,13 @@ export class ProductListingComponent implements OnInit {
     });
   }
 
+  busTimeSlots(){
+    if(new Date(Date()).getHours() <13) return true;
+    else {
+      this.period ='06:00 AM';
+      return false
+    };
+  }
 
   createOrder(id) {
 
