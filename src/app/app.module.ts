@@ -23,6 +23,9 @@ import { EmptyComponent } from './shared/empty/empty.component';
 import { CheckoutComponent } from './components/cart/checkout/checkout.component';
 import { OrderListingComponent } from './components/orders/order-listing/order-listing.component';
 import { OrderDetailsComponent } from './components/orders/order-details/order-details.component';
+import { BookingListingComponent } from './components/booking/booking-listing/booking-listing.component';
+import { BusListingComponent } from './components/bus/bus-listing/bus-listing.component';
+import { BusDetailsComponent } from './components/bus/bus-details/bus-details.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { OrderDetailsComponent } from './components/orders/order-details/order-d
     CheckoutComponent,
     OrderListingComponent,
     OrderDetailsComponent,
+    BookingListingComponent,
+    BusListingComponent,
+    BusDetailsComponent,
   ],
   imports: [
     BrowserModule,

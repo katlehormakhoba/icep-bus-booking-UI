@@ -12,6 +12,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from './components/authorization/shared/service/auth-guard.service';
 import { OrderDetailsComponent } from './components/orders/order-details/order-details.component';
+import { BusListingComponent } from './components/bus/bus-listing/bus-listing.component';
+import { BusDetailsComponent } from './components/bus/bus-details/bus-details.component';
 
 
 const routes: Routes = [
@@ -19,7 +21,7 @@ const routes: Routes = [
     path: '', redirectTo: 'products', pathMatch: 'full'
   },
   {
-    path: 'products', component: ProductListingComponent
+    path: 'products', component: BusListingComponent
   },
   {
     path: 'product/:id', component: ProductDetailsComponent,
@@ -43,7 +45,7 @@ const routes: Routes = [
     path: 'me', component: AccountComponent, canActivate: [AuthGuardService]
   },
   {
-    path: 'support', component: UserSupportComponent
+    path: 'support', component: BusDetailsComponent
   },
   {
     path: 'login', component: LoginComponent

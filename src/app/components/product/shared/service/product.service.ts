@@ -10,7 +10,7 @@ import { extractApiErrors } from 'src/app/shared/helpers/functions';
 })
 export class ProductService {
 
-  URL: string = `https://cottonfest-api-v1.herokuapp.com/api/v1/products`;
+  URL: string = `http://localhost:3000/api/v1/bus`;
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +27,19 @@ export class ProductService {
       );
   }
 
+
+public getActiveBus(): Observable<any[]> {
+
+    return this.http.get<any[]>(`${this.URL}`)
+      .pipe(
+        map(data => {
+          return data;
+        }), catchError((resErr) => {
+          const errors = extractApiErrors(resErr);
+          return throwError(errors);
+        })
+      );
+  }
   public getProduct(id): Observable<Product> {
     return this.http.get<Product>(`${this.URL}/${id}`)
       .pipe(

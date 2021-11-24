@@ -1,29 +1,25 @@
 <div id="center">
   <!-- Start spinner handling -->
-    <ngx-spinner 
-      bdColor = "rgba(0, 0, 0, 0.8)" 
-      size = "medium" 
-      color = "#fff" 
-      type = "pacman" 
-      [fullScreen] = "true"><p style="color: white" > Loading... </p>
-    </ngx-spinner>
-<!-- End spinner handling -->
+  <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="pacman" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+  </ngx-spinner>
+  <!-- End spinner handling -->
 
-<!-- Start error handling -->
-    <div *ngIf="errors.length > 0" class="alert alert-warning">
-        <p *ngFor="let error of errors">
-          {{error.message}}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </p>
-      </div>
-<div *ngIf="message" class="alert alert-success">
-            {{message}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
+  <!-- Start error handling -->
+  <div *ngIf="errors.length > 0" class="alert alert-warning">
+    <p *ngFor="let error of errors">
+      {{error.message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </p>
+  </div>
+  <div *ngIf="message" class="alert alert-success">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 </div>
 <!-- End of error handling -->
 
@@ -74,71 +70,111 @@
     </ul>
   </nav> -->
 
-  <div class="site-section bg-image gradient-1" style="background-image: url('https://preview.redd.it/d0fjtxuga6lz.jpg?auto=webp&s=4fb2ca3d186d02041f75109d84d5a0941b6ad0e1')">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-7 mx-auto text-center align-self-center">
-          <h1 class="font-weight-bold mb-0 text-white">Tshwane University of Technology Bus Booking </h1>
-          <p class="text-white">Book your seat now!</p>
-          <p><a href="#start" class="btn btn-info px-4 py-3">See Available Bus</a></p>
-        </div>
+<div class="site-section bg-image gradient-1"
+  style="background-image: url('https://preview.redd.it/d0fjtxuga6lz.jpg?auto=webp&s=4fb2ca3d186d02041f75109d84d5a0941b6ad0e1')">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7 mx-auto text-center align-self-center">
+        <h1 class="font-weight-bold mb-0 text-white">Tshwane University of Technology Bus Booking </h1>
+        <p class="text-white">Book your seat now!</p>
+        <p><a data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-info px-4 py-3">See Available Bus</a>
+        </p>
       </div>
-      
     </div>
+
   </div>
-  
-  
-  <div class="site-section" id="start">
-    <div class="container">
-      <div class="row mb-4">
-        <div class="col-md-7">
-          <h2 class="heading-21921">Time slots</h2>
-          <p class="lead">Red slot - Students with Exam "Mandatory". <br>
-            Yellow slot - Students with Exam "Priority" <br>
-            Blue slot - All students accepted</p>
-          
+</div>
+
+
+<div class="site-section" id="start">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-md-7">
+        <h2 class="heading-21921">Time slots</h2>
+        <p class="lead">Red slot - Students with Exam "Mandatory". <br>
+          Yellow slot - Students with Exam "Priority" <br>
+          Blue slot - All students accepted</p>
+
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col">
+        <div class="bg-light p-4">
+          <ng-container *ngIf="busTimeSlots() else pmTime">
+            <div class="alert rounded border-0 py-3 alert-danger" role="alert">
+              6:05 - 6:35 Arcadia campus to Main campus || 6:40 - 7:10 Main campus to Arcadia campus
+            </div>
+            <div class="alert rounded border-0 py-3 alert-danger" role="alert">
+              7:15 - 7:45 Arcadia campus to Main campus || 7:50 - 8:20 Main campus to Arcadia campus
+            </div>
+            <div class="alert rounded border-0 py-3 alert-warning" role="alert">
+              8:25 - 8:55 Arcadia campus to Main campus || 9:00 - 9:30 Main campus to Arcadia campus
+            </div>
+            <div class="alert rounded border-0 py-3 alert-primary" role="alert">
+              9:35 - 10:05 Arcadia campus to Main campus || 10:10 - 10:40 Main campus to Arcadia campus
+            </div>
+            <div class="alert rounded border-0 py-3 alert-primary" role="alert">
+              10:45 - 11:15 Arcadia campus to Main campus || 11:20 - 11:50 Main campus to Arcadia campus
+            </div>
+
+          </ng-container>
+          <ng-template #pmTime>
+            <div class="alert rounded border-0 py-3 alert-danger" role="alert">
+              6:05 - 6:35 Arcadia campus to Main campus || 6:40 - 7:10 Main campus to Arcadia campus
+            </div>
+            <div class="alert rounded border-0 py-3 alert-danger" role="alert">
+              7:15 - 7:45 Arcadia campus to Main campus || 7:50 - 8:20 Main campus to Arcadia campus
+            </div>
+            <div class="alert rounded border-0 py-3 alert-warning" role="alert">
+              8:25 - 8:55 Arcadia campus to Main campus || 9:00 - 9:30 Main campus to Arcadia campus
+            </div>
+            <div class="alert rounded border-0 py-3 alert-primary" role="alert">
+              9:35 - 10:05 Arcadia campus to Main campus || 10:10 - 10:40 Main campus to Arcadia campus
+            </div>
+            <div class="alert rounded border-0 py-3 alert-primary" role="alert">
+              10:45 - 11:15 Arcadia campus to Main campus || 11:20 - 11:50 Main campus to Arcadia campus
+            </div>
+          </ng-template>
+
+          <span style="color:red">Next time slot will begin at {{period}}</span>
         </div>
       </div>
-      <div class="row mb-4">
-        <div class="col">
-          <div class="bg-light p-4">
-            <ng-container *ngIf="busTimeSlots() else pmTime">
-              <div class="alert rounded border-0 py-3 alert-danger" role="alert">
-                6:05 - 6:35 Arcadia campus to Main campus || 6:40 - 7:10 Main campus to Arcadia campus
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div *ngFor="let bus of buses" class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Bus Details</h5>
+            <button type="button" #closebutton class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              <!-- <span aria-hidden="true"><span class="icon-close1"></span></span> -->
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="card-group vgr-cards">
+                <div class="card">
+                  <div class="card-img-body">
+                    <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
+                  </div>
+                  <div class="card-body">
+                    <h4 class="card-title">{{bus.name}}</h4>
+                    <p class="card-text">
+                      Destination : {{bus.from}} - {{bus.to}} <br>
+                      Maximum capacity : {{bus.seats}} <br>
+                      Available Seats : {{availableSeats}}
+                    </p>
+                    <a (click)="createBooking(bus._id)" class="btn btn-outline-primary">Book Bus</a>
+                  </div>
+                </div>
+                
+                
               </div>
-              <div class="alert rounded border-0 py-3 alert-danger" role="alert">
-                7:15 - 7:45 Arcadia campus to Main campus || 7:50 - 8:20 Main campus to Arcadia campus
-              </div>
-              <div class="alert rounded border-0 py-3 alert-warning" role="alert">
-                8:25 - 8:55 Arcadia campus to Main campus || 9:00 - 9:30 Main campus to Arcadia campus
-              </div>
-              <div class="alert rounded border-0 py-3 alert-primary" role="alert">
-                9:35 - 10:05 Arcadia campus to Main campus || 10:10 - 10:40 Main campus to Arcadia campus
-              </div>
-              <div class="alert rounded border-0 py-3 alert-primary" role="alert">
-                10:45 - 11:15 Arcadia campus to Main campus || 11:20 - 11:50 Main campus to Arcadia campus
-              </div>
-              
-            </ng-container>
-            <ng-template #pmTime>
-              <div class="alert rounded border-0 py-3 alert-danger" role="alert">
-                6:05 - 6:35 Arcadia campus to Main campus || 6:40 - 7:10 Main campus to Arcadia campus
-              </div>
-              <div class="alert rounded border-0 py-3 alert-danger" role="alert">
-                7:15 - 7:45 Arcadia campus to Main campus || 7:50 - 8:20 Main campus to Arcadia campus
-              </div>
-              <div class="alert rounded border-0 py-3 alert-warning" role="alert">
-                8:25 - 8:55 Arcadia campus to Main campus || 9:00 - 9:30 Main campus to Arcadia campus
-              </div>
-              <div class="alert rounded border-0 py-3 alert-primary" role="alert">
-                9:35 - 10:05 Arcadia campus to Main campus || 10:10 - 10:40 Main campus to Arcadia campus
-              </div>
-              <div class="alert rounded border-0 py-3 alert-primary" role="alert">
-                10:45 - 11:15 Arcadia campus to Main campus || 11:20 - 11:50 Main campus to Arcadia campus
-              </div>
-            </ng-template>
-            
-            <span style="color:red">Next time slot will begin at {{period}}</span>
+            </div>
           </div>
         </div>
       </div>
+    </div>

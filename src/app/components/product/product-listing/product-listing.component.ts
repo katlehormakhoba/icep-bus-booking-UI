@@ -3,7 +3,7 @@ import { AuthService } from './../../authorization/shared/service/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../shared/service/product.service';
 import { Product } from '../shared/model/product.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../../cart/shared/service/cart.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -15,9 +15,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ProductListingComponent implements OnInit {
 
   products: Product[] = [];
+  buses: any[] = [];
+  availableSeats: number;
   message: string = '';
   errors = [];
-  period = '12:00 PM'
+  period = '12:00 PM';
+  @ViewChild('closebutton') closebutton;
+  
   constructor(
     private productService: ProductService,
     private cartService: CartService,
@@ -29,10 +33,23 @@ export class ProductListingComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // this.checkMessage();
+    // this.spinner.show();
+    // this.productService.getAllProducts().subscribe((products: Product[]) => {
+    //   this.products = products['data'];
+    //   this.spinner.hide();
+    //   // console.log(products);
+    // }, errors => {
+    //   this.spinner.hide();
+    //   this.errors[0] = errors;
+    // });
+
     this.checkMessage();
     this.spinner.show();
-    this.productService.getAllProducts().subscribe((products: Product[]) => {
-      this.products = products['data'];
+    this.productService.getActiveBus().subscribe((bus: any[]) => {
+      this.buses = bus['data'];
+      this.availableSeats = bus['availableSeats'];
+      console.log(bus['availableSeats'])
       this.spinner.hide();
       // console.log(products);
     }, errors => {
@@ -63,6 +80,23 @@ export class ProductListingComponent implements OnInit {
       this.period ='06:00 AM';
       return false
     };
+  }
+
+  createBooking(id){
+    this.errors = [];
+    this.message = '';
+
+    return this.cartService.createBooking(id, {}).subscribe(data => {
+      // console.log("order",data);
+
+      this.message = 'Bus successfully booked';
+
+    }, errors => {
+
+      this.errors[0] = errors;
+      this.closebutton.nativeElement.click();
+    });
+
   }
 
   createOrder(id) {

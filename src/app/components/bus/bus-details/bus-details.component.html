@@ -1,0 +1,54 @@
+<div>
+    
+    <div class="col" style="margin-top: 23px;">
+        <!-- Start spinner handling -->
+    <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="pacman" [fullScreen]="true">
+        <p style="color: white"> Loading... </p>
+      </ngx-spinner>
+      <!-- End spinner handling -->
+    
+      <!-- Start error handling -->
+      <div *ngIf="errors.length > 0" class="alert alert-warning">
+        <p *ngFor="let error of errors">
+          {{error.message}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </p>
+      </div>
+      <div *ngIf="message" class="alert alert-success">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    
+    <!-- End of error handling -->
+        
+        <h3 class="text-center" style="font-weight: bold;color: rgb(0,106,194);">Bus History</h3>
+    </div>
+</div>
+<div class="col">
+    <div class="table-responsive">
+        <table class="table table-sm">
+            <thead style="background-color: #006ac2;color: rgb(255,255,255);">
+                <tr>
+                    <th>Name</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bus of buses" class="border rounded-0 shadow-sm" style="font-weight: normal;line-height: 22px;">
+                    <td>{{bus.name}}</td>
+                    <td>{{bus.to}}</td>
+                    <td>{{bus.from}}</td>
+                    <td>{{busExpD(bus.expDate)}}</td>
+                    <td class="border rounded-0 justify-content-between">{{busStatus(bus.expDate)}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

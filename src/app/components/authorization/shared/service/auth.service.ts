@@ -24,7 +24,7 @@ class DecodedToken {
 })
 export class AuthService {
 
-  URL: string = 'https://cottonfest-api-v1.herokuapp.com/api/v1/users';
+  URL: string = 'http://localhost:3000/api/v1/users';
   private decodedToken: DecodedToken;
 
   constructor(private http: HttpClient) {
