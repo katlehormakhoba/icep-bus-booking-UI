@@ -14,38 +14,27 @@ import { AuthGuardService } from './components/authorization/shared/service/auth
 import { OrderDetailsComponent } from './components/orders/order-details/order-details.component';
 import { BusListingComponent } from './components/bus/bus-listing/bus-listing.component';
 import { BusDetailsComponent } from './components/bus/bus-details/bus-details.component';
+import { BookingListingComponent } from './components/booking/booking-listing/booking-listing.component';
 
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'products', pathMatch: 'full'
+    path: '', redirectTo: 'bus', pathMatch: 'full'
   },
   {
-    path: 'products', component: BusListingComponent
+    path: 'bus', component: BusListingComponent
   },
   {
-    path: 'product/:id', component: ProductDetailsComponent,
-  },
-  {
-    path: 'cart', component: CartListingComponent, canActivate: [AuthGuardService]
+    path: 'booking', component: BookingListingComponent, canActivate: [AuthGuardService]
   },
   {
     path: 'wish', component: WishListComponent, canActivate: [AuthGuardService]
   },
   {
-    path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService]
-  },
-  {
-    path: 'order', component: OrderListingComponent, canActivate: [AuthGuardService]
-  },
-  {
-    path: 'order/:id', component: OrderDetailsComponent, canActivate: [AuthGuardService]
-  },
-  {
     path: 'me', component: AccountComponent, canActivate: [AuthGuardService]
   },
   {
-    path: 'support', component: BusDetailsComponent
+    path: 'history', component: BusDetailsComponent
   },
   {
     path: 'login', component: LoginComponent
