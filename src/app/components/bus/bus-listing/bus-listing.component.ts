@@ -2,9 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from '../../authorization/shared/service/auth.service';
-import { CartService } from '../../cart/shared/service/cart.service';
-import { WishService } from '../../cart/shared/service/wish.service';
-import { ProductService } from '../../product/shared/service/product.service';
+import { BookingService } from '../../booking/shared/service/booking.service';
+
 import { Bus } from '../shared/model/bus.model';
 import { BusService } from '../shared/service/bus.service';
 
@@ -25,19 +24,22 @@ export class BusListingComponent implements OnInit {
 
   constructor(
     private busService: BusService,
-    private productService: ProductService,
-    private cartService: CartService,
+    private bookingService: BookingService,
     private route: ActivatedRoute,
     private router: Router,
     private spinner: NgxSpinnerService,
-    private wishService: WishService,
+
     private auth: AuthService) { }
 
     ngOnInit(): void {
 
+      this.getActiveBus()
+    }
+
+    getActiveBus(){
       this.checkMessage();
       this.spinner.show();
-      this.productService.getActiveBus().subscribe((bus: Bus[]) => {
+      this.busService.getActiveBus().subscribe((bus: Bus[]) => {
         this.buses = bus['data'];
         this.availableSeats = bus['availableSeats'];
         console.log(bus['availableSeats'])
@@ -77,10 +79,15 @@ export class BusListingComponent implements OnInit {
       this.errors = [];
       this.message = '';
   
-      return this.cartService.createBooking(id, {}).subscribe(data => {
+      return this.bookingService.createBooking(id, {}).subscribe(data => {
         // console.log("order",data);
-  
-        this.message = 'Bus successfully booked';
+        this.closebutton.nativeElement.click();
+      
+        this.router.navigate(['/booking'], {
+          queryParams: { message: 'You have booked bus successfully' }
+        });
+       
+        
   
       }, errors => {
   
@@ -90,29 +97,11 @@ export class BusListingComponent implements OnInit {
   
     }
   
-    createOrder(id) {
-  
-      this.errors = [];
-      this.message = '';
-  
-      return this.cartService.createOrder(id, {}).subscribe(data => {
-        // console.log("order",data);
-  
-        this.message = 'product successfully added to cart';
-  
-      }, errors => {
-  
-        this.errors[0] = errors;
-      });
+    busDeparture(createdAt){
+      createdAt = new Date(createdAt);
+      createdAt.setMinutes(createdAt.getMinutes() + 10);
+      return new Date(createdAt).toLocaleString();
+    
     }
-  
-    createWishlist(id) {
-  
-      return this.wishService.createWishlist(id, {}).subscribe(data => {
-        // DOES NOTHING IF SUCCESSFULL
-      }, errors => {
-        this.errors[0] = errors;
-      });
-    }  
 
 }

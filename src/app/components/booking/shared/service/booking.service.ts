@@ -10,7 +10,7 @@ import { Booking } from '../model/booking.model';
 })
 export class BookingService {
 
-  URL: string = `http://localhost:3000/api/v1/booking`;
+  URL: string = `https://icep-bus-api.herokuapp.com/api/v1/booking`;
 
 
   constructor(private http: HttpClient) { }
@@ -28,6 +28,17 @@ export class BookingService {
       );
   }
 
+  public createBooking(id, formBody): Observable<any> {
+    return this.http.post<any>(`${this.URL}/${id}`, formBody)
+      .pipe(
+        map(data => {
+          return data;
+        }),
+        catchError((resErr) => {
+          const errors = extractApiErrors(resErr);
+          return throwError(errors);
+        }));
+  }
   
 
 }

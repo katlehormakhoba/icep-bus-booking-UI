@@ -10,7 +10,7 @@ import { User } from '../model/user.model';
 })
 export class UserService {
 
-  URL: string = 'http://localhost:3000/api/v1/users';
+  URL: string = 'https://icep-bus-api.herokuapp.com/api/v1/users';
 
   constructor(
     private http: HttpClient

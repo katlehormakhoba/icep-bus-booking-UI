@@ -34,58 +34,6 @@
     <ng-template #notEmpty>
       <!--Section: Block Content-->
     <section>
-    
-      <!-- Grid row -->
-      <div class="row">
-    
-        <!-- Grid column -->
-        <div *ngFor="let booking of bookings" class="col-md-4 mb-5">
-    
-          <!-- Card -->
-          <div class="">
-    
-            <div class="view zoom overlay z-depth-2 rounded">
-              <img class="img-fluid w-100"
-                src="https://picsum.photos/500/230" alt="Sample">
-            </div>
-    
-            <div class="text-center pt-4">
-    
-              <h5>TUTbus</h5>
-              <p class="mb-2 text-muted text-uppercase small">From</p>
-              <ul  class="rating" >
-                  <li>
-                    <i class="fa fa-star fa-sm text-primary"></i>
-                  </li>
-                  <li>
-                    <i class="fa fa-star fa-sm text-primary"></i>
-                  </li>
-                  <li>
-                    <i class="fa fa-star fa-sm text-primary"></i>
-                  </li>
-                  <li>
-                    <i class="fa fa-star fa-sm text-primary"></i>
-                  </li>
-                  <li>
-                    <i class="fa fa-star-o fa-sm text-primary"></i>
-                  </li>
-                </ul>
-              <hr>
-              <h6 class="mb-3">To}</h6>
-              
-    
-            </div>
-    
-          </div>
-          <!-- Card -->
-    
-        </div>
-        <!-- Grid column -->
-    
-       
-    
-      </div>
-      <!-- Grid row -->
 
       <div>
         
@@ -97,23 +45,20 @@
             <table class="table table-sm">
                 <thead style="background-color: rgb(220,171,0);color: rgb(255,255,255);">
                     <tr>
-                        <th>Item#</th>
-                        <th>Name</th>
-                        <th>Qty</th>
-                        <th>Cost</th>
-                        <th>Total Cost</th>
-                        <th>Action</th>
+                        <th>Bus Name</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Departure time</th>
+                        <th>Prerequisite</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border rounded-0 shadow-sm" style="font-weight: normal;line-height: 22px;">
-                        <td>0001</td>
-                        <td>Clutch plate</td>
-                        <td>2</td>
-                        <td>R 2500.00</td>
-                        <td>Kabelo Hlungwani</td>
-                        <td class="border rounded-0 justify-content-between">&nbsp;<button class="btn btn-primary text-nowrap border-white" type="button" style="background-color: rgb(255,255,255);"><i class="fa fa-trash-o" style="font-size: 20px;color: rgb(220,171,0);"></i></button><button class="btn btn-primary text-nowrap border-white"
-                                type="button" style="padding-top: 6px;background-color: rgb(255,255,255);"><i class="fa fa-edit bg-white border-white" style="color: rgb(220,171,0);font-size: 20px;"></i></button></td>
+                    <tr *ngFor="let booking of bookings" class="border rounded-0 shadow-sm" style="font-weight: normal;line-height: 22px;">
+                        <td>{{booking.bus.name}}</td>
+                        <td>{{booking.bus.from}}</td>
+                        <td>{{booking.bus.to}}</td>
+                        <td>{{busExpD(booking.bus.expDate)}}</td>
+                        <td class="border rounded-0 justify-content-between">&nbsp;{{prerequisite(booking.createdAt)}}</td>
                     </tr>
                 </tbody>
                 <tfoot>

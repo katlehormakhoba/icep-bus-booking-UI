@@ -11,7 +11,7 @@ import { Bus } from '../model/bus.model';
 export class BusService {
 
   
-  URL: string = `http://localhost:3000/api/v1/bus`;
+  URL: string = `https://icep-bus-api.herokuapp.com/api/v1/bus`;
 
 
   constructor(private http: HttpClient) { }

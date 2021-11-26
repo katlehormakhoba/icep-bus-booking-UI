@@ -23,52 +23,7 @@
   </div>
   <!-- End of error handling -->
   
-  <!-- Page card listing -->
-  <!-- <div class="row">
-      <div *ngFor="let product of products" class="col-sm-12 col-md-6 col-lg-4" style="padding-top: 20px">
-  
-          <div class="card">
-              <a routerLink="/product/{{product._id}}">
-                  <img src="{{product.coverImage}}" class="card-img-top" alt="...">
-                  <div class="card-img-overlay d-flex justify-content-end">
-                      <a (click)="createWishlist(product._id)" style=" font-size:36px" 
-                        class="card-link text-danger like"  data-toggle="tooltip" 
-                        data-placement="top" title="Add to wishlist">
-                        <i class="fa fa-heart"></i>
-                      </a>
-                    </div>
-              </a>
-              <div class="card-body">
-                  <h5 class="card-title">{{product.name}}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">{{product.brand}}</h6>
-                  <p class="card-text">{{product.summary}}</p>
-                  <div id="myrow" class="row">
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                          <a (click)=createOrder(product._id)><i class="fa fa-cart-plus" style="cursor: pointer;"></i></a>
-                      </div>
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                          <a>R{{product.price}}</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-  
-      </div>
-  </div>
-  
-  <nav aria-label="Page navigation example"  style="padding-top: 20px">
-      <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
-        </li>
-      </ul>
-    </nav> -->
+
   
   <div class="site-section bg-image gradient-1"
     style="background-image: url('https://preview.redd.it/d0fjtxuga6lz.jpg?auto=webp&s=4fb2ca3d186d02041f75109d84d5a0941b6ad0e1')">
@@ -120,19 +75,19 @@
             </ng-container>
             <ng-template #pmTime>
               <div class="alert rounded border-0 py-3 alert-danger" role="alert">
-                6:05 - 6:35 Arcadia campus to Main campus || 6:40 - 7:10 Main campus to Arcadia campus
+                12:05 - 12:35 Arcadia campus to Main campus || 12:40 - 13:10 Main campus to Arcadia campus
               </div>
               <div class="alert rounded border-0 py-3 alert-danger" role="alert">
-                7:15 - 7:45 Arcadia campus to Main campus || 7:50 - 8:20 Main campus to Arcadia campus
+                13:15 - 13:45 Arcadia campus to Main campus || 13:50 - 14:20 Main campus to Arcadia campus
               </div>
               <div class="alert rounded border-0 py-3 alert-warning" role="alert">
-                8:25 - 8:55 Arcadia campus to Main campus || 9:00 - 9:30 Main campus to Arcadia campus
+                14:25 - 14:55 Arcadia campus to Main campus || 15:00 - 15:30 Main campus to Arcadia campus
               </div>
               <div class="alert rounded border-0 py-3 alert-primary" role="alert">
-                9:35 - 10:05 Arcadia campus to Main campus || 10:10 - 10:40 Main campus to Arcadia campus
+                15:35 - 16:05 Arcadia campus to Main campus || 16:10 - 16:40 Main campus to Arcadia campus
               </div>
               <div class="alert rounded border-0 py-3 alert-primary" role="alert">
-                10:45 - 11:15 Arcadia campus to Main campus || 11:20 - 11:50 Main campus to Arcadia campus
+                16:45 - 17:15 Arcadia campus to Main campus || 17:20 - 17:50 Main campus to Arcadia campus
               </div>
             </ng-template>
   
@@ -158,13 +113,14 @@
                 <div class="card-group vgr-cards">
                   <div class="card">
                     <div class="card-img-body">
-                      <img class="card-img" src="https://picsum.photos/500/230" alt="Card image cap">
+                      <img class="card-img" src="https://rekord.co.za/wp-content/uploads/sites/85/2017/05/IMG_0425_91536.jpg" alt="Card image cap">
                     </div>
                     <div class="card-body">
                       <h4 class="card-title">{{bus.name}}</h4>
                       <p class="card-text">
                         Destination : {{bus.from}} - {{bus.to}} <br>
-                        Maximum capacity : {{bus.seats}} <br>
+                        Maximum passengers : {{bus.seats}} <br>
+                        Departure time : {{busDeparture(bus.createdAt)}} <br>
                         Available Seats : {{availableSeats}}
                       </p>
                       <a (click)="createBooking(bus._id)" class="btn btn-outline-primary">Book Bus</a>
